@@ -19,7 +19,7 @@ const importData = async () => {
     
     const adminUser = await User.create({
       name: 'Admin User',
-      email: 'admin@shopzware.com',
+      email: 'admin@shopnest.com',
       password: hashedPassword,
       role: 'admin'
     });
