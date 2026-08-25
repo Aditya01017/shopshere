@@ -47,7 +47,7 @@ npm run seed
 > **Seed Admin Access:** Email: `admin@shopnest.com` | Password: `password123`
 
 ### 3️⃣ Run Servers Start
-Run this single command at the root to bind the Backend (Port 5000) and Frontend (Port 3000) natively:
+Run this single  command at the root to bind the Backend (Port 5000) and Frontend (Port 3000) natively:
 ```bash
 npm run dev
 ```
