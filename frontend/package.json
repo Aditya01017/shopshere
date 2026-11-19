@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "author": "Shivansh Vasu",
+  "author": "Aditya Jain <147207523+Aditya01017@users.noreply.github.com>",
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
@@ -35,5 +35,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aditya01017/shopshere.git",
+    "directory": "frontend"
   }
 }
