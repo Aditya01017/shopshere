@@ -7,22 +7,25 @@ const connectDB = require('./config/db');
 
 dotenv.config();
 
-connectDB();
-
 const importData = async () => {
   try {
-    await User.deleteMany();
-    await Product.deleteMany();
+    const adminPassword = process.env.SEED_ADMIN_PASSWORD;
+    if (!adminPassword || !adminPassword.trim()) {
+      throw new Error('Set SEED_ADMIN_PASSWORD before running the seed command.');
+    }
 
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash('password123', salt);
-    
-    const adminUser = await User.create({
-      name: 'Admin User',
-      email: 'admin@shopshere.com',
-      password: hashedPassword,
-      role: 'admin'
-    });
+    await connectDB();
+
+    const existingAdmin = await User.findOne({ email: 'admin@shopshere.com' });
+    if (!existingAdmin) {
+      const hashedPassword = await bcrypt.hash(adminPassword, 12);
+      await User.create({
+        name: 'Admin User',
+        email: 'admin@shopshere.com',
+        password: hashedPassword,
+        role: 'admin'
+      });
+    }
 
     const products = [
       {
@@ -67,13 +70,20 @@ const importData = async () => {
       }
     ];
 
-    await Product.insertMany(products);
+    for (const product of products) {
+      await Product.updateOne(
+        { name: product.name },
+        { $setOnInsert: product },
+        { upsert: true }
+      );
+    }
     
-    console.log('✅ Data Imported Successfully!');
-    process.exit();
+    console.log('Seed complete. Existing users and products were preserved.');
   } catch (error) {
-    console.error(`❌ Error with data import: ${error.message}`);
-    process.exit(1);
+    console.error(`Seed failed: ${error.message}`);
+    process.exitCode = 1;
+  } finally {
+    await mongoose.disconnect();
   }
 };
 

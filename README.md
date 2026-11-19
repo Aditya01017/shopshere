@@ -1,78 +1,42 @@
-<div align="center">
-  <img src="https://cdn-icons-png.flaticon.com/512/3514/3514491.png" alt="shopshere logo" width="80" />
-  <h1>shopshere - Full-Stack MERN E-Commerce App</h1>
-  <p>A professionally engineered, full-stack E-commerce platform built strictly using modern standard React (CRA) on the frontend and Express/MongoDB on the backend.</p>
-</div>
+# Shopshere
 
----
+Shopshere is a full-stack MERN e-commerce portfolio project. It includes a customer storefront, account and order flows, an admin dashboard, Razorpay payment handling, and Cloudinary product image uploads.
 
-## 🛠 Tech Stack Details
+Maintained by [Aditya Jain](https://github.com/Aditya01017) · [GitHub repository](https://github.com/Aditya01017/shopshere)
 
-- **Frontend:** Pure React.js (`react-scripts`), Redux Toolkit (for Cart state management), AuthContext API (for JWT user sessions).
-- **Backend:** Node.js, Express.js architecture mapped with middleware-based routing.
-- **Database:** MongoDB (via Mongoose schemas).
-- **Features:** Unified Admin Dashboard, Direct Cloudinary Content Maps, Personal User Profiles matching mapped Order Histories.
-- **Payments:** Razorpay fully implemented (utilize your test metrics or placeholder).
-- **Cloud Storage:** Cloudinary integration for Product image uploading securely via Multer.
+## Stack
 
----
+- **Frontend:** React, Redux Toolkit, React Router
+- **Backend:** Node.js, Express, MongoDB, Mongoose
+- **Integrations:** Razorpay, Cloudinary, Nodemailer
 
-## 🚀 Quick Start / Local Development Guide
+## Run locally
 
-The workspace is configured beautifully using a monorepo-friendly setup with `concurrently`, enabling you to start everything from the very root folder.
+Use Node.js 20 or newer and a MongoDB database. Copy `backend/.env.example` to `backend/.env`, then set the database URL, a strong JWT secret, and any provider credentials you plan to use. Keep real credentials in local environment files and out of Git.
 
-### 1️⃣ Dependencies & Environments
-Make sure you have MongoDB running locally, or map it to a remote database string.
+From the project root:
 
-Inside the `backend/` folder, ensure your `.env` looks like this:
-```env
-PORT=5000
-NODE_ENV=development
-MONGO_URI=mongodb://127.0.0.1:27017/shopshere
-JWT_SECRET=super_secret_key
-RAZORPAY_KEY_ID=your_key_id
-RAZORPAY_KEY_SECRET=your_key_secret
+```bash
+npm run install-all
+npm run dev
 ```
 
-From the **root folder** `shopshere/`, trigger a full install across environments:
+The frontend runs on port `3000` and the API on port `5000` by default.
+
+## Seed sample data
+
+Set a unique `SEED_ADMIN_PASSWORD` in `backend/.env`, then run:
+
+```bash
+npm run seed
+```
+
+The seed command creates the sample admin account if it does not exist and adds sample products that are missing. It preserves existing users and products.
+
+## Build
+
 ```bash
 npm run build
 ```
 
-### 2️⃣ Populate the Database (Seeding)
-Test the platform rapidly featuring beautiful dummy products (Unsplash) and automatic `Admin` role provisioning:
-```bash
-npm run seed
-```
-> **Seed Admin Access:** Email: `admin@shopshere.com` | Password: `password123`
-
-### 3️⃣ Run Servers Start
-Run this single  command at the root to bind the Backend (Port 5000) and Frontend (Port 3000) natively:
-```bash
-npm run dev
-```
-
----
-
-## ☁️ 1-Click Deployment (Render Free-Tier Optimized)
-
-The server codebase features a seamless fallback mechanic leveraging Node `process.env.NODE_ENV === "production"`. When deployed to Render as a singular instance, the Express backend hosts and correctly resolves static routes to `/frontend/build` rendering the whole platform completely free on 1 Node server.
-
-1. Publish this repo onto **GitHub**.
-2. Go to [Render Dashboard](https://dashboard.render.com).
-3. Connect Repo -> Create a **Web Service**.
-4. Configure Build Command:
-   `npm run render-build` 
-   *(This cleanly installs API + UI node_modules then generates `react-scripts build`)*
-5. Configure Start Command:
-   `npm start`
-6. Open **Advanced > Environment Variables** and map your `.env` fields heavily defining `NODE_ENV = production`.
-7. Hit **Deploy**. The robust path resolving inside `/backend/server.js` hosts it fluidly!
-
----
-
-## 📄 Postman Documentations
-This repository includes a fully-scaffolded API testing toolkit: **`shopshere_Postman_Collection.json`**.
-Simply Import this file directly into the local Postman IDE. It features variables like `{{token}}` properly mapped to effortlessly check protected admin/user/order payloads. Happy coding!
-
-Repository: https://github.com/Aditya01017/shopshere
+This builds the frontend for production.
