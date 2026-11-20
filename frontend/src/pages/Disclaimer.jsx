@@ -1,4 +1,3 @@
-import React from 'react';
 
 const textualStyle = {
   maxWidth: '900px',
@@ -19,26 +18,26 @@ const Disclaimer = () => {
       </h2>
       
       <p style={{ marginBottom: '20px' }}>
-        The data, interfaces, and graphical components represented across the Shopshere domain strictly act uniquely as an educational development platform. This codebase models rigorous application structures and architectures for purely demonstrative, portfolio-oriented engineering usage.
+        Shopshere is a portfolio demonstration. Products, accounts, order flows, and media are sample application data; this project is not a live retail business.
       </p>
 
       <h4 style={{ color: '#f97316', marginTop: '25px', marginBottom: '10px' }}>1. Accuracy of Materials</h4>
       <p style={{ marginBottom: '15px' }}>
-        The materials spanning the Shopshere interface may heavily include dynamic technical, typographical, or dummy photographic elements. Product matrices mapped in the DB pipeline do absolutely not correlate to strictly real physical outputs and are safely populated via generic Unsplash imagery protocols.
+        Product information and images are illustrative. They do not represent a promise that an item exists, is available, or can be delivered.
       </p>
 
       <h4 style={{ color: '#f97316', marginTop: '25px', marginBottom: '10px' }}>2. Payment Processing Restrictions</h4>
       <p style={{ marginBottom: '15px' }}>
-        No authentic financial variables are handled natively within this environment. All payment endpoints forcefully bind exclusively to external testing-based networks (Sandbox Razorpay environments). No exact deductibles exist.
+        Checkout is restricted to Razorpay test-mode keys. Use test payment methods only. This project does not process live purchases, returns, or refunds.
       </p>
 
       <h4 style={{ color: '#f97316', marginTop: '25px', marginBottom: '10px' }}>3. External Binding Links</h4>
       <p style={{ marginBottom: '15px' }}>
-        Shopshere operates completely independent domains and takes strictly zero absolute parameter responsibility over the specific contents or behaviors populated via external routing anchors generated implicitly by third-party configurations.
+        Third-party services such as Razorpay, MongoDB, Cloudinary, and email require separate credentials and are outside the application's control. Keep secrets out of source control.
       </p>
 
       <p style={{ marginTop: '30px', fontStyle: 'italic', fontSize: '0.9rem' }}>
-        By interacting natively within this codebase, you unconditionally signal acceptance bounded by these parameters efficiently.
+        Do not submit real payment details, sensitive personal information, or data belonging to other people.
       </p>
     </div>
   );

@@ -5,8 +5,8 @@ const orderSchema = new mongoose.Schema({
   items: [
     {
       productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
-      qty: { type: Number, required: true },
-      price: { type: Number, required: true }
+      qty: { type: Number, required: true, min: 1, max: 20 },
+      price: { type: Number, required: true, min: 0 }
     }
   ],
   totalAmount: { type: Number, required: true },
@@ -17,7 +17,8 @@ const orderSchema = new mongoose.Schema({
     postalCode: { type: String, required: true },
     country: { type: String, required: true }
   },
-  paymentId: { type: String },
+  paymentId: { type: String, required: true },
+  razorpayOrderId: { type: String, required: true, unique: true, sparse: true },
   status: { type: String, enum: ['Pending', 'Shipped', 'Delivered'], default: 'Pending' },
 }, { timestamps: true });
 

@@ -1,8 +1,7 @@
-import React, { createContext, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
+import { AuthContext } from './AuthContext.js';
 
-export const AuthContext = createContext();
-
-export const AuthProvider = ({ children }) => {
+export default function AuthProvider({ children }) {
   const [user, setUser] = useState(
     localStorage.getItem('userInfo') ? JSON.parse(localStorage.getItem('userInfo')) : null
   );
@@ -22,4 +21,4 @@ export const AuthProvider = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
